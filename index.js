@@ -34,6 +34,7 @@ Saml2js.prototype.parse = function(saml) {
     var name = xpath.select('string(@Name)', attribute);    
     profile[_.camelCase(name)] = xpath.select('string(*[local-name() = "AttributeValue"]/text())', attribute);
   });
+  profile.certificate = xpath.select('string(//*[local-name() = "X509Certificate"]/text())', doc);
 
   return profile;
 };
